@@ -8,3 +8,7 @@ Gradle Wrapper is used for build and tests
 
 ```
 ./gradlew clean build
+```
+
+## Assumptions
+- CSV file will always contain valid gender and Date formate in dd/MM/yyyy

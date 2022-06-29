@@ -1,2 +1,14 @@
+pluginManagement {
+    repositories {
+        mavenLocal()
+        gradlePluginPortal()
+        mavenCentral()
+    }
+
+    plugins {
+        id 'io.freefair.lombok' version "6.0.0-m2"
+    }
+}
+
 rootProject.name = 'user-address-service'
 

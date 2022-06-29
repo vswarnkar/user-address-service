@@ -1,12 +1,26 @@
 plugins {
     id 'java'
+    id 'io.freefair.lombok'
 }
 
 group 'com.scl.gt'
 version '1.0-SNAPSHOT'
 
+sourceCompatibility = 11
+targetCompatibility = 11
+
 repositories {
     mavenCentral()
+}
+
+dependencies {
+
+    implementation group: 'com.opencsv', name: 'opencsv', version: "5.5.1"
+
+    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.23.1'
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.9.0-M1'
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: '5.9.0-M1'
+    testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.9.0-M1'
 }
 
 test {

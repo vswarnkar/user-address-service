@@ -71,7 +71,6 @@ public class UserAddressService {
 
             if (secondContact.isEmpty()) {
                 log.error(format(UNKNOWN_USER_ERROR_MESSAGE, secondPersonName));
-                log.error("There is no user with name: " + secondPersonName);
                 throw new UnknownUserException(format(UNKNOWN_USER_ERROR_MESSAGE, secondPersonName));
             }
 

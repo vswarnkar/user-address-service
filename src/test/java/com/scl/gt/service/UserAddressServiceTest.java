@@ -20,7 +20,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import static com.scl.gt.model.Gender.FEMALE;
 import static com.scl.gt.model.Gender.MALE;
-import static java.lang.String.format;
 import static java.util.Collections.emptyList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -106,7 +105,7 @@ class UserAddressServiceTest {
         given(addressBookProcessor.processAddress()).willReturn(emptyList());
 
         assertThatThrownBy(() ->userAddressService.getNumberOfDaysBetweenTwoUsersDateOfBirth("user1", "user2")).isInstanceOf(NoUserAddressExist.class)
-                .hasMessage(format("No data available to find number of days difference between %s and %s", "user1", "user2"));
+                .hasMessage("No user data available to find number of days difference for %s and %s", "user1", "user2");
     }
 
     private List<Address> buildAddresses() {

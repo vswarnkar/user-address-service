@@ -1,9 +1,14 @@
 package com.scl.gt.service;
 
+import java.util.stream.Stream;
+
 import com.scl.gt.component.AddressBookProcessor;
 import com.scl.gt.component.AddressBookReader;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -30,10 +35,17 @@ class UserAddressServiceIntegrationTest {
         assertThat(oldestPersonName).isEqualTo("Wes Jackson");
     }
 
-    @Test
-    void shouldGetNumberOfDaysBetweenTwoUsersDateOfBirth() {
-        var daysBetweenTwoUsersDateOfBirth = userAddressService.getNumberOfDaysBetweenTwoUsersDateOfBirth("Bill", "Paul");
+    @ParameterizedTest
+    @MethodSource("scenarioToGetNumberOfDaysBetweenTwoUsersDateOfBirthIncludingIgnoreCase")
+    void shouldGetNumberOfDaysBetweenTwoUsersDateOfBirth(String user1, String user2) {
+        var daysBetweenTwoUsersDateOfBirth = userAddressService.getNumberOfDaysBetweenTwoUsersDateOfBirth(user1, user2);
         assertThat(daysBetweenTwoUsersDateOfBirth).isEqualTo(2862);
+    }
+
+    private static Stream<Arguments> scenarioToGetNumberOfDaysBetweenTwoUsersDateOfBirthIncludingIgnoreCase() {
+        return Stream.of(Arguments.of("Bill McKnight", "Paul Robinson"),
+                         Arguments.of("BiLL McKnight", "PAUL Robinson"),
+                         Arguments.of("BILL McKNIGHT", "Paul ROBINSON"));
     }
 
 }

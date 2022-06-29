@@ -57,16 +57,16 @@ public class UserAddressService {
 
         if (isNotEmpty(userAddresses)) {
             Optional<Address> firstContact = userAddresses.stream()
-                                                          .filter(address -> address.getName().contains(firstPersonName))
+                                                          .filter(address -> address.getName().equalsIgnoreCase(firstPersonName))
                                                           .findAny();
 
             if (firstContact.isEmpty()) {
-                log.error(format(UNKNOWN_USER_ERROR_MESSAGE, firstContact));
-                throw new UnknownUserException(format(UNKNOWN_USER_ERROR_MESSAGE, firstContact));
+                log.error(format(UNKNOWN_USER_ERROR_MESSAGE, firstPersonName));
+                throw new UnknownUserException(format(UNKNOWN_USER_ERROR_MESSAGE, firstPersonName));
             }
 
             Optional<Address> secondContact = userAddresses.stream()
-                                                                   .filter(address -> address.getName().contains(secondPersonName))
+                                                                   .filter(address -> address.getName().equalsIgnoreCase(secondPersonName))
                                                                    .findAny();
 
             if (secondContact.isEmpty()) {
@@ -76,7 +76,7 @@ public class UserAddressService {
 
             return ChronoUnit.DAYS.between(firstContact.get().getDateOfBirth(), secondContact.get().getDateOfBirth());
         }
-        throw new NoUserAddressExist(format("No data available to find number of days difference between %s and %s", firstPersonName, secondPersonName));
+        throw new NoUserAddressExist(format("No user data available to find number of days difference for %s and %s", firstPersonName, secondPersonName));
     }
 
     private List<Address> getUserAddresses() {

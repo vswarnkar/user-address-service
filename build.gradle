@@ -15,14 +15,14 @@ repositories {
 
 dependencies {
 
-    implementation group: 'com.opencsv', name: 'opencsv', version: "5.5.1"
-    implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.0-alpha7'
+    implementation group: 'com.opencsv', name: 'opencsv', version: "${openCsvVersion}"
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: "${slf4jVersion}"
 
-    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.23.1'
-    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.9.0-M1'
-    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: '5.9.0-M1'
-    testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.9.0-M1'
-    testImplementation group: 'org.mockito', name: 'mockito-junit-jupiter', version: '4.6.1'
+    testImplementation group: 'org.assertj', name: 'assertj-core', version: "${assertjCoreVersion}"
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: "${junitJupiterVersion}"
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: "${junitJupiterVersion}"
+    testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: "${junitJupiterVersion}"
+    testImplementation group: 'org.mockito', name: 'mockito-junit-jupiter', version: "${mockitoVersion}"
 }
 
 test {

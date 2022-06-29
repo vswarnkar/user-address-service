@@ -24,4 +24,10 @@ class UserAddressServiceIntegrationTest {
         assertThat(maleCount).isEqualTo(3);
     }
 
+    @Test
+    void shouldFindOldestPerson() {
+        var oldestPersonName = userAddressService.findOldestPerson();
+        assertThat(oldestPersonName).isEqualTo("Wes Jackson");
+    }
+
 }

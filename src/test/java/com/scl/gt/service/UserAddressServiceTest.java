@@ -52,9 +52,27 @@ class UserAddressServiceTest {
         then(addressBookProcessor).should().processAddress();
     }
 
+    @Test
+    void shouldFindOldestPerson() {
+        given(addressBookProcessor.processAddress()).willReturn(buildAddresses());
+        var oldestPersonName = userAddressService.findOldestPerson();
+
+        assertThat(oldestPersonName).isEqualTo("User 2");
+        then(addressBookProcessor).should().processAddress();
+    }
+
+    @Test
+    void shouldReturnNullValueWhenNoAddressAvailable() {
+        given(addressBookProcessor.processAddress()).willReturn(emptyList());
+        var oldestPersonName = userAddressService.findOldestPerson();
+
+        assertThat(oldestPersonName).isNull();
+        then(addressBookProcessor).should().processAddress();
+    }
+
     private List<Address> buildAddresses() {
-        return List.of(buildAddress("User 1", MALE, "1991-01-11"),
-                       buildAddress("User 2", FEMALE, "1992-01-11"),
+        return List.of(buildAddress("User 1", MALE, "1992-01-11"),
+                       buildAddress("User 2", FEMALE, "1991-01-11"),
                        buildAddress("User 3", MALE, "1998-05-25"));
     }
 

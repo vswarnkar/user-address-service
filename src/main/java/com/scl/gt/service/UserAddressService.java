@@ -13,7 +13,6 @@ import com.scl.gt.model.Address;
 import com.scl.gt.model.Gender;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.collections.CollectionUtils;
 
 import static java.lang.String.format;
 import static org.apache.commons.collections.CollectionUtils.isEmpty;
@@ -84,4 +83,5 @@ public class UserAddressService {
     private List<Address> getUserAddresses() {
         return addressBookProcessor.processAddress();
     }
+
 }

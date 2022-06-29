@@ -11,4 +11,5 @@ Gradle Wrapper is used for build and tests
 ```
 
 ## Assumptions
-- CSV file will always contain valid gender and Date formate in dd/MM/yyyy
+- CSV file will always contain valid gender and Date format in dd/MM/yyyy
+- There aren't any duplicate names

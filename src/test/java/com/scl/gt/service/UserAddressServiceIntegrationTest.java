@@ -30,4 +30,10 @@ class UserAddressServiceIntegrationTest {
         assertThat(oldestPersonName).isEqualTo("Wes Jackson");
     }
 
+    @Test
+    void shouldGetNumberOfDaysBetweenTwoUsersDateOfBirth() {
+        var daysBetweenTwoUsersDateOfBirth = userAddressService.getNumberOfDaysBetweenTwoUsersDateOfBirth("Bill", "Paul");
+        assertThat(daysBetweenTwoUsersDateOfBirth).isEqualTo(2862);
+    }
+
 }
